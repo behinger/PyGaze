@@ -514,7 +514,7 @@ class OpenGazeTracker:
         return
     
     def _send_message(self, command, ID, values=None, \
-        wait_for_acknowledgement=True, resend_timeout=3.0, maxwait=9.0):
+        wait_for_acknowledgement=True, resend_timeout=3.0, maxwait=30.0):
         
         # Format a message in an XML format that the Open Gaze API needs.
         msg = self._format_msg(command, ID, values=values)
