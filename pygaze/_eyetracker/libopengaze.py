@@ -470,6 +470,11 @@ class OpenGazeTracker(BaseEyeTracker):
                         err['{}{}'.format(eye, dim)].append(abs(d))
                         # Store the squared distance.
                         var['{}{}'.format(eye, dim)].append(d**2)
+                        
+        if len(var['LX']) == 0:
+                # if nothing in here, calibration was not successful
+                   print("could not find any samples in calibration, aborting")
+                   return False
         # Compute the RMS noise for the calibration points.
         xnoise = (math.sqrt(sum(var['LX']) / float(len(var['LX']))) + \
             math.sqrt(sum(var['RX']) / float(len(var['RX'])))) / 2.0
